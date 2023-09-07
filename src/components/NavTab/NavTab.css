@@ -1,0 +1,39 @@
+.navTab {
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: -66px;
+}
+.navTab__btn {
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 10px;
+  background: #303030;
+  border: 0;
+  width: 96px;
+  height: 36px;
+  padding: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.navTab__btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+  .navTab {
+    gap: 6px;
+    margin-top: -43px;
+  }
+  .navTab__btn {
+    font-size: 10px;
+    width: 82px;
+    height: 26px;
+  }
+}

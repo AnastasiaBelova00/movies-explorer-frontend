@@ -1,0 +1,81 @@
+.navigation {
+  display: flex;
+  gap: 17px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  align-items: center;
+  margin-left: 64px;
+}
+
+.navigation_nologgedin {
+  font-weight: 500;
+  font-size: 12px;
+  flex-grow: 1;
+  justify-content: end;
+  margin-right: 30px;
+}
+
+.navlink {
+  margin: 0;
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.navlink:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.navlink_active {
+  font-weight: 500;
+}
+
+.navigation__profile {
+  background-image: url("../../images/profile.svg");
+  width: 100px;
+  height: 32px;
+  transition: opacity 0.2s ease 0.1s;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.navigation__profile:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.navigation__button {
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 3px;
+  border: 0;
+  background: #3ddc84;
+  width: 76px;
+  height: 32px;
+  padding: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.navigation__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .navigation__button {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  .navigation_nologgedin {
+    font-size: 10px;
+    margin-right: 14px;
+  }
+}
