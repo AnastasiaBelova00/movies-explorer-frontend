@@ -17,6 +17,7 @@ export default function BurgerMenu({ isOpenBurger, setOpenBurger }) {
               className={({ isActive }) =>
                 `burger__link ${isActive ? "link_active" : ""}`
               }
+              onClick={() => setOpenBurger(false)}
             >
               Главная
             </NavLink>
@@ -25,6 +26,7 @@ export default function BurgerMenu({ isOpenBurger, setOpenBurger }) {
               className={({ isActive }) =>
                 `burger__link ${isActive ? "link_active" : ""}`
               }
+              onClick={() => setOpenBurger(false)}
             >
               Фильмы
             </NavLink>
@@ -33,13 +35,17 @@ export default function BurgerMenu({ isOpenBurger, setOpenBurger }) {
               className={({ isActive }) =>
                 `burger__link ${isActive ? "link_active" : ""}`
               }
+              onClick={() => setOpenBurger(false)}
             >
               Сохранённые фильмы
             </NavLink>
           </nav>
 
           <NavLink to="/signin">
-            <button className="burger__button"></button>
+            <button
+              className="burger__button"
+              onClick={() => setOpenBurger(false)}
+            ></button>
           </NavLink>
         </div>
       </div>
