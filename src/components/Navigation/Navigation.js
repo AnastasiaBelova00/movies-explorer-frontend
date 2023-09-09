@@ -1,16 +1,19 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 export default function Navigation({ loggedIn }) {
+  const [isOpenBurger, setOpenBurger] = useState(false);
   return (
     <>
-      {loggedIn ? (
+      {!loggedIn ? (
         <>
           <nav className="navigation">
             <NavLink
               to="/movies"
               className={({ isActive }) =>
-                `navlink ${isActive ? "navlink_active" : ""}`
+                `nav__link ${isActive ? "link_active" : ""}`
               }
             >
               Фильмы
@@ -18,20 +21,28 @@ export default function Navigation({ loggedIn }) {
             <NavLink
               to="/saved-movies"
               className={({ isActive }) =>
-                `navlink ${isActive ? "navlink_active" : ""}`
+                `nav__link ${isActive ? "link_active" : ""}`
               }
             >
               Сохранённые фильмы
             </NavLink>
           </nav>
-          <Link to="#">
+          <NavLink to="/profile">
             <button className="navigation__profile"></button>
-          </Link>
+          </NavLink>
+          <button
+            className="navigation__burger"
+            onClick={() => setOpenBurger(true)}
+          ></button>
+          <BurgerMenu
+            isOpenBurger={isOpenBurger}
+            setOpenBurger={setOpenBurger}
+          />
         </>
       ) : (
         <>
           <div className="navigation navigation_nologgedin">
-            <Link to="/signup" className="navlink">
+            <Link to="/signup" className="nav__link">
               Регистрация
             </Link>
           </div>
