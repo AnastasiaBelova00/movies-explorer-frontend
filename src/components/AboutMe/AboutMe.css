@@ -16,6 +16,8 @@
 
 .aboutMe__container_text {
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
 }
 .aboutMe__name {
   font-size: 50px;
@@ -47,7 +49,7 @@
 }
 
 .aboutMe__git {
-  padding-top: 73px;
+  padding-top: 30px;
   margin: 0;
   font-size: 14px;
   font-style: normal;
@@ -67,11 +69,10 @@
 }
 
 .aboutMe__photo {
-  max-width: 270px;
-  max-height: 327px;
-  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
   border-radius: 10px;
-  /* lightgray 50% / cover no-repe */
+  align-self: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -109,9 +110,13 @@
     max-width: 255px;
     max-height: 307px;
   }
+
+  .aboutMe__git {
+    padding-top: 37px;
+  }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
   .aboutMe {
     width: 91%;
     margin: 71px auto 0;
