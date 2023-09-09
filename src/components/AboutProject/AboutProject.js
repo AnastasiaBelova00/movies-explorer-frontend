@@ -2,10 +2,8 @@ import "./AboutProject.css";
 
 export default function AboutProject() {
   return (
-    <section className="aboutProject">
-      <h2 className="mainTitle" id="aboutProject">
-        О проекте
-      </h2>
+    <section className="aboutProject" id="aboutProject">
+      <h2 className="mainTitle">О проекте</h2>
       <div className="aboutProject__containers">
         <div className="aboutProject__container">
           <h3 className="aboutProject__title">
@@ -26,11 +24,11 @@ export default function AboutProject() {
           </p>
         </div>
       </div>
-      <div className="aboutProject__duration">
-        <p className="aboutProject__duration_green">1 неделя</p>
-        <p className="aboutProject__duration_grey">4 недели</p>
-        <p className="aboutProject__duration_subtitle">Back-end</p>
-        <p className="aboutProject__duration_subtitle">Front-end</p>
+      <div className="aboutProject__indicator">
+        <p className="aboutProject__indicator_green">1 неделя</p>
+        <p className="aboutProject__indicator_grey">4 недели</p>
+        <p className="aboutProject__indicator_subtitle">Back-end</p>
+        <p className="aboutProject__indicator_subtitle">Front-end</p>
       </div>
     </section>
   );
