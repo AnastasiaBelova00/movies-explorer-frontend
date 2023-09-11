@@ -7,6 +7,7 @@ import NotFound from "../NotFound/NotFound";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Register from "../Register/Register";
+import Login from "../Login/Login";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Register />} />
+          <Route path="/signin" element={<Login />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
         <Footer />
