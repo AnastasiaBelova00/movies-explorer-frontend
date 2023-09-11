@@ -46,8 +46,8 @@ export default function Navigation({ loggedIn }) {
               Регистрация
             </Link>
           </div>
-          <Link to="/signin">
-            <button className="navigation__button">Войти</button>
+          <Link className="navigation__button" to="/signin">
+            Войти
           </Link>
         </>
       )}

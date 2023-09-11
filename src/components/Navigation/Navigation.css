@@ -63,6 +63,11 @@
   width: 76px;
   height: 32px;
   padding: 0;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   transition: opacity 0.2s ease 0.1s;
 }
 
