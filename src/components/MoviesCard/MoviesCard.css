@@ -1,0 +1,144 @@
+.card {
+  margin: 0;
+  position: relative;
+  max-width: 360px;
+  width: 100%;
+}
+.card__image {
+  width: 100%;
+  max-width: 360px;
+  max-height: 201px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.card__button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../../images/save.svg");
+  width: 72px;
+  height: 21px;
+  background-color: transparent;
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 14px;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.card__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.card__button_saved {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../../images/saved.svg");
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 14px;
+  transition: opacity 0.2s ease 0.1s;
+}
+.card__button_saved:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.card__button_delete {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-image: url("../../images/delete.svg");
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 14px;
+  transition: opacity 0.2s ease 0.1s;
+}
+.card__button_saved:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.card__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  margin: 0 auto;
+  padding-top: 8px;
+}
+.card__title {
+  color: #fff;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+}
+.card__duration {
+  color: #8b8b8b;
+  text-align: center;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 10px;
+  border-radius: 3px;
+  background: #2f2f2f;
+  width: 52px;
+  height: 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  .card {
+    max-width: 339px;
+  }
+  .card__image {
+    max-width: 339px;
+    max-height: 190px;
+  }
+  .card__text {
+    width: 100%;
+    padding-top: 21px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    max-width: 300px;
+  }
+  .card__image {
+    max-width: 300px;
+    max-height: 168px;
+  }
+  .card__text {
+    padding-top: 10px;
+  }
+  .card__title {
+    font-size: 12px;
+  }
+  .card__button {
+    top: 9px;
+    right: 9px;
+  }
+  .card__button_saved {
+    top: 9px;
+    right: 9px;
+  }
+}
