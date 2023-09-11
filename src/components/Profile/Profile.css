@@ -1,0 +1,136 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 75px;
+  height: 60vh;
+  align-items: center;
+  max-width: 410px;
+}
+.profile__title {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-bottom: 123px;
+}
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.profile__input-container {
+  display: flex;
+  border-bottom: 1px solid #424242;
+  justify-content: space-between;
+  min-height: 30px;
+}
+.profile__input-container:last-of-type {
+  border-bottom: none;
+  margin-top: 17px;
+}
+
+.profile__label {
+  color: #fff;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  min-width: 65px;
+}
+.profile__input {
+  background-color: transparent;
+  color: #fff;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  padding: 0 0 16px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.profile__input-value {
+  color: #fff;
+  text-align: right;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.profile__submit {
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  padding: 203px 0 16px;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.profile__submit:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.profile__logout {
+  background-color: transparent;
+  color: #ee3465;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  padding: 0;
+  width: 100%;
+  transition: opacity 0.2s ease 0.1s;
+}
+.profile__logout:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding-top: 235px;
+  }
+  .profile__title {
+    padding-bottom: 97px;
+  }
+  .profile__submit {
+    padding: 193px 0 16px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile {
+    padding-top: 68px;
+    width: 81%;
+  }
+
+  .profile__title {
+    padding-bottom: 80px;
+  }
+  .profile__submit {
+    padding: 364px 0 13px;
+    font-size: 12px;
+  }
+  .profile__logout {
+    font-size: 12px;
+  }
+}

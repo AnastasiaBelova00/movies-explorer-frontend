@@ -1,21 +1,26 @@
 import "./App.css";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Header from "../Header/Header.js";
-import Main from "../Main/Main.js";
-import Footer from "../Footer/Footer";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import Register from "../Register/Register";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-
   return (
     <div className="app">
       <div className="app__container">
         <Header loggedIn={loggedIn} />
-        <Main />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
         <Footer />
-        {/* <Route path="/*" element={<NotFound />} /> */}
       </div>
     </div>
   );

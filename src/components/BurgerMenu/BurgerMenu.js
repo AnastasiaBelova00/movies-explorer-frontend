@@ -41,7 +41,7 @@ export default function BurgerMenu({ isOpenBurger, setOpenBurger }) {
             </NavLink>
           </nav>
 
-          <NavLink to="/signin">
+          <NavLink to="/profile">
             <button
               className="burger__button"
               onClick={() => setOpenBurger(false)}
