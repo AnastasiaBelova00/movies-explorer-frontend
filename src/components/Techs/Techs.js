@@ -1,10 +1,11 @@
 import "./Techs.css";
+import MainTitle from "../MainTitle/MainTitle";
 
 export default function Techs() {
   return (
     <section className="techs" id="techs">
       <div className="techs__container">
-        <h2 className="mainTitle">Технологии</h2>
+        <MainTitle text="Технологии" />
         <div className="techs__container_text">
           <h3 className="techs__title">7 технологий</h3>
           <p className="techs__subtitle">

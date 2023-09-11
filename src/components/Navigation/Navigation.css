@@ -21,6 +21,10 @@
   color: white;
   text-decoration: none;
   transition: opacity 0.2s ease 0.1s;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 .nav__link:hover {
@@ -28,7 +32,7 @@
   cursor: pointer;
 }
 
-.link_active {
+.nav_active {
   font-weight: 500;
 }
 

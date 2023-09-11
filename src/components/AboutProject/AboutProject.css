@@ -6,17 +6,6 @@
   padding-bottom: 110px;
 }
 
-.mainTitle {
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.88px;
-  border-bottom: 1px solid #dadada;
-  padding-bottom: 23px;
-  margin: 0;
-}
-
 .aboutProject__containers {
   display: flex;
   padding: 70px 0 110px;

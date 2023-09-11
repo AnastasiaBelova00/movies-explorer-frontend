@@ -1,11 +1,12 @@
 import "./AboutMe.css";
 import student from "../../images/student.jpg";
 import Portfolio from "../Portfolio/Portfolio";
+import MainTitle from "../MainTitle/MainTitle";
 
 export default function AboutMe() {
   return (
     <section className="aboutMe" id="aboutMe">
-      <h2 className="mainTitle">Студент</h2>
+      <MainTitle text="Cтудент" />
       <div className="aboutMe__container">
         <div className="aboutMe__container_text">
           <h3 className="aboutMe__name">Анастасия</h3>

@@ -7,13 +7,13 @@ export default function Navigation({ loggedIn }) {
   const [isOpenBurger, setOpenBurger] = useState(false);
   return (
     <>
-      {!loggedIn ? (
+      {loggedIn ? (
         <>
           <nav className="navigation">
             <NavLink
               to="/movies"
               className={({ isActive }) =>
-                `nav__link ${isActive ? "link_active" : ""}`
+                `nav__link ${isActive ? "nav_active" : ""}`
               }
             >
               Фильмы
@@ -21,7 +21,7 @@ export default function Navigation({ loggedIn }) {
             <NavLink
               to="/saved-movies"
               className={({ isActive }) =>
-                `nav__link ${isActive ? "link_active" : ""}`
+                `nav__link ${isActive ? "nav_active" : ""}`
               }
             >
               Сохранённые фильмы

@@ -1,9 +1,10 @@
 import "./AboutProject.css";
+import MainTitle from "../MainTitle/MainTitle";
 
 export default function AboutProject() {
   return (
     <section className="aboutProject" id="aboutProject">
-      <h2 className="mainTitle">О проекте</h2>
+      <MainTitle text="О проекте" />
       <div className="aboutProject__containers">
         <div className="aboutProject__container">
           <h3 className="aboutProject__title">
