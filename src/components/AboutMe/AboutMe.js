@@ -8,7 +8,7 @@ export default function AboutMe() {
     <section className="aboutMe" id="aboutMe">
       <MainTitle text="Cтудент" />
       <div className="aboutMe__container">
-        <div className="aboutMe__container_text">
+        <div className="aboutMe__text-container">
           <h3 className="aboutMe__name">Анастасия</h3>
           <p className="aboutMe__text">Фронтенд-разработчик, 26 лет</p>
           <p className="aboutMe__text">
@@ -25,6 +25,8 @@ export default function AboutMe() {
             <a
               className="aboutMe__link"
               href="https://github.com/AnastasiaBelova00?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Github
             </a>

@@ -5,7 +5,7 @@
   justify-content: center;
   margin-top: -66px;
 }
-.nav__btn {
+.navTab__btn {
   text-decoration: none;
   color: white;
   font-size: 12px;
@@ -25,7 +25,7 @@
   text-align: center;
 }
 
-.nav__btn:hover {
+.navTab__btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -35,7 +35,7 @@
     gap: 6px;
     margin-top: -43px;
   }
-  .nav__btn {
+  .navTab__btn {
     font-size: 10px;
     width: 82px;
     height: 26px;

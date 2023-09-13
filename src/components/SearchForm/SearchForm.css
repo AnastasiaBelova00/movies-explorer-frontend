@@ -41,7 +41,7 @@
   transition: opacity 0.2s ease 0.1s;
 }
 
-.search-form__btn {
+.search-form__btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }

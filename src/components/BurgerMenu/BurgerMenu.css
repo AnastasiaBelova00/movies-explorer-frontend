@@ -79,7 +79,7 @@
   opacity: 0.7;
 }
 
-.link_active {
+.burger__link-active {
   text-decoration: underline;
 }
 .burger__button {

@@ -6,10 +6,12 @@ import AboutMe from "../AboutMe/AboutMe";
 export default function Main() {
   return (
     <>
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
+      <main>
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+      </main>
     </>
   );
 }

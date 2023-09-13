@@ -4,8 +4,8 @@ import "./Logo.css";
 
 export default function Logo() {
   return (
-    <Link className="logo__link" to="/">
-      <img className="logo" src={logo} alt="Круглый логотип" />
+    <Link className="logo" to="/">
+      <img className="logo__img" src={logo} alt="Круглый логотип" />
     </Link>
   );
 }

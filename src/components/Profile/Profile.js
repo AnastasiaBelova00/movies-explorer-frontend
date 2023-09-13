@@ -3,7 +3,7 @@ import "./Profile.css";
 
 export default function Profile() {
   return (
-    <div className="profile">
+    <main className="profile">
       <h1 className="profile__title">Привет, Виталий!</h1>
       <form className="profile__form">
         <div className="profile__input-container">
@@ -37,6 +37,6 @@ export default function Profile() {
           </button>
         </Link>
       </form>
-    </div>
+    </main>
   );
 }

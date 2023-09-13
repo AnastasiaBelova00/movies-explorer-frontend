@@ -18,7 +18,7 @@
   justify-items: center;
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .movie-cards__button {
@@ -36,19 +36,17 @@
   background: #202020;
   padding: 0;
   margin-top: 50px;
+  transition: opacity 0.2s ease 0.1s;
 }
 
-/* @media screen and (max-width: 1270px) {
-  .cards {
-    row-gap: 47px;
-    width: 97%;
-  }
-} */
+.movie-cards__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .cards {
     width: 93%;
-    justify-content: space-between;
     row-gap: 44px;
     padding: 0;
   }
@@ -57,9 +55,9 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 677px) {
   .cards {
-    width: 100%;
+    width: 90%;
     row-gap: 38px;
   }
   .movie-cards {

@@ -1,12 +1,11 @@
 import "./Techs.css";
-import MainTitle from "../MainTitle/MainTitle";
 
 export default function Techs() {
   return (
     <section className="techs" id="techs">
       <div className="techs__container">
-        <MainTitle text="Технологии" />
-        <div className="techs__container_text">
+        <h2 className="techs__heading">Технологии</h2>
+        <div className="techs__text-container">
           <h3 className="techs__title">7 технологий</h3>
           <p className="techs__subtitle">
             На курсе веб-разработки мы освоили технологии, которые применили в

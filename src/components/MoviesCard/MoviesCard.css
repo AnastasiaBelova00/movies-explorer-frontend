@@ -19,15 +19,21 @@
   background-image: url("../../images/save.svg");
   width: 72px;
   height: 21px;
+  object-fit: cover;
   background-color: transparent;
   position: absolute;
   z-index: 1;
   top: 14px;
   right: 14px;
+  opacity: 0;
   transition: opacity 0.2s ease 0.1s;
 }
 
-.card__button:hover {
+.card:hover .card__button {
+  opacity: 1;
+}
+
+.card:hover .card__button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
@@ -105,13 +111,12 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1070px) {
   .card {
-    max-width: 339px;
+    max-width: 500px;
   }
   .card__image {
-    max-width: 339px;
-    max-height: 190px;
+    max-width: 500px;
   }
   .card__text {
     width: 100%;
@@ -119,7 +124,7 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 677px) {
   .card {
     max-width: 300px;
   }

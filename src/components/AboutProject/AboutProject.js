@@ -26,10 +26,10 @@ export default function AboutProject() {
         </div>
       </div>
       <div className="aboutProject__indicator">
-        <p className="aboutProject__indicator_green">1 неделя</p>
-        <p className="aboutProject__indicator_grey">4 недели</p>
-        <p className="aboutProject__indicator_subtitle">Back-end</p>
-        <p className="aboutProject__indicator_subtitle">Front-end</p>
+        <p className="aboutProject__indicator-green">1 неделя</p>
+        <p className="aboutProject__indicator-grey">4 недели</p>
+        <p className="aboutProject__indicator-subtitle">Back-end</p>
+        <p className="aboutProject__indicator-subtitle">Front-end</p>
       </div>
     </section>
   );

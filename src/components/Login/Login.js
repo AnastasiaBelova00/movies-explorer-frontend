@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 export default function Login() {
   return (
     <>
-      <div className="login">
+      <main className="login">
         <Form
           title="Рады видеть!"
           submit="Войти"
@@ -28,7 +28,7 @@ export default function Login() {
             placeholder="Введите пароль"
           />
         </Form>
-      </div>
+      </main>
     </>
   );
 }

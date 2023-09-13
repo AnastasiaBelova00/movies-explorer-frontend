@@ -5,8 +5,10 @@ import { movies } from "../../utils/constants";
 export default function Movies() {
   return (
     <>
-      <SearchForm />
-      <MoviesCardList movies={movies} />
+      <main>
+        <SearchForm />
+        <MoviesCardList movies={movies} />
+      </main>
     </>
   );
 }

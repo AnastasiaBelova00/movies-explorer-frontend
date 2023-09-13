@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 export default function Register() {
   return (
     <>
-      <div className="register">
+      <main className="register">
         <Form
           title={"Добро пожаловать!"}
           submit={"Зарегистрироваться"}
@@ -35,7 +35,7 @@ export default function Register() {
             placeholder="Введите пароль"
           />
         </Form>
-      </div>
+      </main>
     </>
   );
 }

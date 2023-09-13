@@ -12,7 +12,7 @@ export default function Form({
   linkText,
 }) {
   return (
-    <div className="form">
+    <section className="form">
       <Logo />
       <h1 className="form__title">{title}</h1>
       <form className="form__form">
@@ -32,6 +32,6 @@ export default function Form({
           </Link>
         </p>
       </div>
-    </div>
+    </section>
   );
 }

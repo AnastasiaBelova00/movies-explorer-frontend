@@ -21,12 +21,19 @@ export default function Footer() {
                 <a
                   className="footer__link-item"
                   href="https://practicum.yandex.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Яндекс.Практикум
                 </a>
               </li>
               <li className="footer__link">
-                <a className="footer__link-item" href="https://github.com">
+                <a
+                  className="footer__link-item"
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Github
                 </a>
               </li>
