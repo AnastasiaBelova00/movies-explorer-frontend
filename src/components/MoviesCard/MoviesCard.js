@@ -15,7 +15,7 @@ export default function MoviesCard({
 
   //функция сохранения/удаления фильма
   function onSaveClick() {
-    const isSaved = allSavedMovies.some((item) => item.movieId === movie.id);
+    const isSaved = allSavedMovies.find((item) => item.movieId === movie.id);
     if (!isSaved) {
       setSaved(true);
       saveMovie(movie);

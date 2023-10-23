@@ -139,6 +139,7 @@ function App() {
 
   //изменение информации профиля
   function handleUpdateUser(data) {
+    setLoading(true);
     api
       .editUserInfo(data)
       .then((res) => {
@@ -146,6 +147,9 @@ function App() {
       })
       .catch((err) => {
         setServerError(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }
 
