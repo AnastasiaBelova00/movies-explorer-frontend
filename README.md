@@ -1,4 +1,11 @@
-# Frontend дипломного проекта
+# Дипломный проект
+
+Ссылка на pull-request:
+
+Готовый проект: https://nastasya.nomoredomainsicu.ru/
+
+backend: https://api.nastasya.nomoredomainsicu.ru
+IP: 51.250.81.237
 
 # Ссылка на макет в figma:
 
