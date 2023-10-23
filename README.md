@@ -1,6 +1,6 @@
 # Дипломный проект
 
-Ссылка на pull-request:
+Ссылка на pull request: https://github.com/AnastasiaBelova00/movies-explorer-frontend/pull/2
 
 Готовый проект: https://nastasya.nomoredomainsicu.ru/
 
