@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 
 export default function Form({
   title,
+  handleSubmit,
   children,
+  serverError,
   submit,
+  isValid,
   question,
   to,
   linkText,
@@ -15,12 +18,22 @@ export default function Form({
     <section className="form">
       <Logo />
       <h1 className="form__title">{title}</h1>
-      <form className="form__form">
+      <form className="form__form" onSubmit={handleSubmit} noValidate>
         <div className="form__container">
           {children}
-          <p className="form__error">Что-то пошло не так...</p>
+          <span
+            className={`form__error ${
+              serverError ? "form__error_visible" : ""
+            }`}
+          >
+            {serverError}
+          </span>
         </div>
-        <button className="form__submit" type="submit">
+        <button
+          className={`form__submit ${!isValid ? "form__submit_disabled" : ""}`}
+          type="submit"
+          disabled={!isValid}
+        >
           {submit}
         </button>
       </form>

@@ -3,11 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-export default function Navigation({ loggedIn }) {
+export default function Navigation({ isLoggedIn }) {
   const [isOpenBurger, setOpenBurger] = useState(false);
   return (
     <>
-      {!loggedIn ? (
+      {isLoggedIn ? (
         <>
           <nav className="navigation">
             <NavLink

@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import NotFound from "../NotFound/NotFound";
@@ -10,25 +10,292 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { ProtectedRoute } from "../ProtectedRoute";
+import Tooltip from "../Tooltip/Tooltip";
+import Preloader from "../Preloader/Preloader";
+// import { filterNameMovies, filterShortMovies } from "../../utils/utils";
+
+import * as api from "../../utils/MainApi";
+import * as apiMovie from "../../utils/MoviesApi";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  return (
-    <div className="app">
-      <div className="app__container">
-        <Header loggedIn={loggedIn} />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-        <Footer />
+  //стейт логина
+  const [isLoggedIn, setLoggedIn] = useState(true);
+
+  //стейт для проверки регистрации
+  const [isRegistered, setRegistered] = useState(false);
+
+  //попап при статусе регистрации
+  const [isTooltipOpen, setTooltipOpen] = useState(false);
+
+  //данные пользователя
+  const [currentUser, setCurrentUser] = useState({});
+
+  //ошибка сервера
+  const [serverError, setServerError] = useState("");
+
+  //загрузка для прелоадера
+  const [isLoading, setLoading] = useState(false);
+
+  //все фильмы с сервера
+  const [allMovies, setAllMovies] = useState([]);
+
+  //сохраненные фильмы
+  const [allSavedMovies, setAllSavedMovies] = useState([]);
+
+  // //фильмы после фильтрации
+  // const [allFilteredMovies, setAllFilteredMovies] = useState([]);
+
+  //навигация
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  //проверка токена
+  function checkToken() {
+    api
+      .getContent(localStorage.getItem("jwt"))
+      .then((data) => {
+        setLoggedIn(true);
+        setCurrentUser(data);
+        getSavedMovies();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+        setLoggedIn(false);
+      });
+  }
+  useEffect(() => {
+    checkToken();
+  }, []);
+
+  //данные пользователя и запись всех фильмов со стороннего сервера при логине
+  useEffect(() => {
+    if (isLoggedIn) {
+      Promise.all([apiMovie.getAllMovies(), api.getUserInfo()])
+        .then(([movies, userInfo]) => {
+          localStorage.setItem("movies", JSON.stringify(movies));
+          setAllMovies(movies);
+          setCurrentUser({ name: userInfo.name, email: userInfo.email });
+          setLoggedIn(true);
+        })
+        .catch((err) => {
+          console.error(`Ошибка: ${err}`);
+        });
+    }
+  }, [isLoggedIn]);
+
+  //выход
+  function logOut() {
+    setLoggedIn(false);
+    localStorage.clear();
+  }
+
+  //очистка ошибки сервера
+  useEffect(() => {
+    setServerError("");
+  }, [location]);
+
+  //регистрация пользователя
+  function handleRegistration({ name, email, password }) {
+    setLoading(true);
+    api
+      .register(name, email, password)
+      .then(() => {
+        handleLogin({ email, password });
+        setRegistered(true);
+        setTooltipOpen(true);
+      })
+      .catch((err) => {
+        setServerError(err);
+        setRegistered(false);
+        setTooltipOpen(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  //функция логина
+  function handleLogin({ email, password }) {
+    setLoading(true);
+    api
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
+          setLoggedIn(true);
+          navigate("/movies");
+        }
+      })
+      .catch((err) => {
+        setLoggedIn(false);
+        setServerError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  //изменение информации профиля
+  function handleUpdateUser(data) {
+    api
+      .editUserInfo(data)
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        setServerError(err);
+      });
+  }
+
+  // //функция всех фильмов
+  // function getAllMovies() {
+  //   apiMovie
+  //     .getAllMovies()
+  //     .then((movies) => {
+  //       setAllMovies(movies);
+  //       localStorage.setItem("movies", JSON.stringify(movies));
+  //     })
+  //     .catch((err) => {
+  //       console.error(`Ошибка: ${err}`);
+  //     });
+  // }
+
+  //все сохраненные фильмы
+  function getSavedMovies() {
+    api
+      .getSavedMovies()
+      .then((allSavedMovies) => {
+        setAllSavedMovies(allSavedMovies);
+      })
+      .catch((err) => {
+        console.error(`Ошибка: ${err}`);
+      });
+  }
+
+  //сохранение фильма
+  function saveMovie(movie) {
+    api
+      .saveMovie(movie)
+      .then((savedMovie) => {
+        setAllSavedMovies([...allSavedMovies, savedMovie]);
+        localStorage.setItem(
+          "savedMovies",
+          JSON.stringify([...allSavedMovies, savedMovie])
+        );
+      })
+      .catch((err) => {
+        console.error(`Ошибка: ${err}`);
+      });
+  }
+
+  //удаление фильма
+  function deleteMovie(movie) {
+    api
+      .deleteMovie(movie._id)
+      .then(() => {
+        setAllSavedMovies((state) =>
+          state.filter((item) => item._id !== movie._id)
+        );
+      })
+      .catch((err) => {
+        console.error(`Ошибка: ${err}`);
+      });
+  }
+
+  // //фильтр поиска по всем фильмам
+  // function filterMovies(query) {
+  //   const filteredMovies = filterNameMovies(allMovies, query);
+  //   localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
+  //   localStorage.setItem("query", query);
+  //   setFilteredMovies(filteredMovies);
+  // }
+
+  // //фильтр поиска по сохраненным фильмам
+  // function filterSavedMovies(query) {
+  //   const filteredSavedMovies = filterNameMovies(allSavedMovies, query);
+  //   localStorage.setItem(
+  //     "filteredSavedMovies",
+  //     JSON.stringify(filteredSavedMovies)
+  //   );
+  //   localStorage.setItem("query", query);
+  //   setAllSavedMovies(filteredSavedMovies);
+  // }
+
+  return isLoading ? (
+    <Preloader />
+  ) : (
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="app">
+        <div className="app__container">
+          <Header isLoggedIn={isLoggedIn} />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route
+              path="/signup"
+              element={
+                <Register
+                  handleRegistration={handleRegistration}
+                  serverError={serverError}
+                />
+              }
+            />
+
+            <Route
+              path="/signin"
+              element={
+                <Login handleLogin={handleLogin} serverError={serverError} />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute
+                  isLoggedIn={isLoggedIn}
+                  element={Profile}
+                  handleUpdateUser={handleUpdateUser}
+                  logOut={logOut}
+                  serverError={serverError}
+                />
+              }
+            />
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRoute
+                  isLoggedIn={isLoggedIn}
+                  element={Movies}
+                  allMovies={allMovies}
+                  saveMovie={saveMovie}
+                  allSavedMovies={allSavedMovies}
+                  deleteMovie={deleteMovie}
+                />
+              }
+            />
+            <Route
+              path="/saved-movies"
+              element={
+                <ProtectedRoute
+                  isLoggedIn={isLoggedIn}
+                  element={SavedMovies}
+                  allSavedMovies={allSavedMovies}
+                  deleteMovie={deleteMovie}
+                />
+              }
+            />
+
+            <Route path="/*" element={<NotFound />} />
+          </Routes>
+          <Tooltip
+            isTooltipOpen={isTooltipOpen}
+            setTooltipOpen={setTooltipOpen}
+            isRegistered={isRegistered}
+          />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 

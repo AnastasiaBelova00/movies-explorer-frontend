@@ -3,7 +3,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 
-export default function Header({ loggedIn }) {
+export default function Header({ isLoggedIn }) {
   const location = useLocation();
   return (
     <>
@@ -13,7 +13,7 @@ export default function Header({ loggedIn }) {
       location.pathname === "/saved-movies" ? (
         <header className="header">
           <Logo />
-          <Navigation loggedIn={loggedIn} />
+          <Navigation isLoggedIn={isLoggedIn} />
         </header>
       ) : (
         ""

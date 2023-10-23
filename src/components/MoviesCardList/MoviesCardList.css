@@ -44,6 +44,23 @@
   opacity: 0.8;
 }
 
+.movie-cards__button_disable {
+  display: none;
+}
+
+.movie-cards__text {
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
 @media screen and (max-width: 768px) {
   .cards {
     width: 93%;
