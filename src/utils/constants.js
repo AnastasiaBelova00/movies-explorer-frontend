@@ -1,48 +1,29 @@
-// export const movies = [
-//   {
-//     id: 1,
-//     title: "33 слова о дизайне",
-//     duration: "1ч17м",
-//     image:
-//       "https://i.pinimg.com/564x/4c/f8/d5/4cf8d5224ce8c8c305441f189f7e5156.jpg",
-//   },
-//   {
-//     id: 2,
-//     title: "33 слова о дизайне",
-//     duration: "1ч17м",
-//     image:
-//       "https://i.pinimg.com/564x/4c/f8/d5/4cf8d5224ce8c8c305441f189f7e5156.jpg",
-//   },
-//   {
-//     id: 3,
-//     title: "33 слова о дизайне",
-//     duration: "1ч17м",
-//     image:
-//       "https://i.pinimg.com/564x/4c/f8/d5/4cf8d5224ce8c8c305441f189f7e5156.jpg",
-//   },
-//   {
-//     id: 4,
-//     title: "33 слова о дизайне",
-//     duration: "1ч17м",
-//     image:
-//       "https://i.pinimg.com/564x/4c/f8/d5/4cf8d5224ce8c8c305441f189f7e5156.jpg",
-//   },
-//   {
-//     id: 5,
-//     title: "33 слова о дизайне",
-//     duration: "1ч17м",
-//     image:
-//       "https://i.pinimg.com/564x/4c/f8/d5/4cf8d5224ce8c8c305441f189f7e5156.jpg",
-//   },
-//   {
-//     id: 6,
-//     title: "33 слова о дизайне",
-//     duration: "1ч17м",
-//     image:
-//       "https://i.pinimg.com/564x/4c/f8/d5/4cf8d5224ce8c8c305441f189f7e5156.jpg",
-//   },
-// ];
-export const regExEmail = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.[a-z]{2,}";
-export const regExName = "^[A-Za-zА-Яа-я\\s\\-]{2,30}$";
+const REGEX_EMAIL = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.[a-z]{2,}";
+const REGEX_NAME = "^[A-Za-zА-Яа-я\\s\\-]{2,30}$";
 
-export const MOVIE_URL = "https://api.nomoreparties.co";
+const MOVIE_URL = "https://api.nomoreparties.co";
+
+const SCREEN_LARGE = 1066;
+const SCREEN_MEDIUM = 678;
+
+const SHOWN_MOVIES_12 = 12;
+const SHOWN_MOVIES_8 = 8;
+const SHOWN_MOVIES_5 = 5;
+
+const DESKTOP = 3;
+const TABLET = 2;
+const MOBILE = 2;
+
+export {
+  REGEX_EMAIL,
+  REGEX_NAME,
+  MOVIE_URL,
+  SCREEN_LARGE,
+  SCREEN_MEDIUM,
+  SHOWN_MOVIES_12,
+  SHOWN_MOVIES_8,
+  SHOWN_MOVIES_5,
+  DESKTOP,
+  TABLET,
+  MOBILE,
+};

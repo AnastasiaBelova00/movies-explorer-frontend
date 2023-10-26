@@ -44,8 +44,8 @@ function App() {
   //сохраненные фильмы
   const [allSavedMovies, setAllSavedMovies] = useState([]);
 
-  // //фильмы после фильтрации
-  // const [allFilteredMovies, setAllFilteredMovies] = useState([]);
+  //стейт для обновления профиля
+  const [isUpdate, setUpdate] = useState(false);
 
   //навигация
   const navigate = useNavigate();
@@ -69,21 +69,41 @@ function App() {
     checkToken();
   }, []);
 
-  //данные пользователя и запись всех фильмов со стороннего сервера при логине
+  //данные пользователя при логине
   useEffect(() => {
     if (isLoggedIn) {
-      Promise.all([apiMovie.getAllMovies(), api.getUserInfo()])
-        .then(([movies, userInfo]) => {
-          localStorage.setItem("movies", JSON.stringify(movies));
-          setAllMovies(movies);
+      setLoading(true);
+      api
+        .getUserInfo()
+        .then((userInfo) => {
           setCurrentUser({ name: userInfo.name, email: userInfo.email });
           setLoggedIn(true);
         })
         .catch((err) => {
           console.error(`Ошибка: ${err}`);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   }, [isLoggedIn]);
+
+  //получение списка фильмов
+  useEffect(() => {
+    setLoading(true);
+    apiMovie
+      .getAllMovies()
+      .then((movies) => {
+        setAllMovies(movies);
+        localStorage.setItem("movies", JSON.stringify(movies));
+      })
+      .catch((err) => {
+        console.error(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   //выход
   function logOut() {
@@ -144,9 +164,13 @@ function App() {
       .editUserInfo(data)
       .then((res) => {
         setCurrentUser(res);
+        setTooltipOpen(true);
+        setUpdate(true);
       })
       .catch((err) => {
         setServerError(err);
+        setTooltipOpen(true);
+        setUpdate(false);
       })
       .finally(() => {
         setLoading(false);
@@ -235,13 +259,16 @@ function App() {
         <div className="app__container">
           <Header isLoggedIn={isLoggedIn} />
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
+
             <Route
               path="/signup"
               element={
-                <Register
+                <ProtectedRoute
+                  element={Register}
                   handleRegistration={handleRegistration}
                   serverError={serverError}
+                  isLoggedIn={!isLoggedIn}
                 />
               }
             />
@@ -249,9 +276,15 @@ function App() {
             <Route
               path="/signin"
               element={
-                <Login handleLogin={handleLogin} serverError={serverError} />
+                <ProtectedRoute
+                  element={Login}
+                  handleLogin={handleLogin}
+                  serverError={serverError}
+                  isLoggedIn={!isLoggedIn}
+                />
               }
             />
+
             <Route
               path="/profile"
               element={
@@ -264,6 +297,7 @@ function App() {
                 />
               }
             />
+
             <Route
               path="/movies"
               element={
@@ -274,9 +308,11 @@ function App() {
                   saveMovie={saveMovie}
                   allSavedMovies={allSavedMovies}
                   deleteMovie={deleteMovie}
+                  isLoading={isLoading}
                 />
               }
             />
+
             <Route
               path="/saved-movies"
               element={
@@ -295,7 +331,9 @@ function App() {
             isTooltipOpen={isTooltipOpen}
             setTooltipOpen={setTooltipOpen}
             isRegistered={isRegistered}
+            isUpdate={isUpdate}
           />
+
           <Footer />
         </div>
       </div>

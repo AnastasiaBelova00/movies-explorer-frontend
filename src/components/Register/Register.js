@@ -2,7 +2,7 @@ import "./Register.css";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 import { useFormWithValidation } from "../../hooks/validation";
-import { regExEmail, regExName } from "../../utils/constants";
+import { REGEX_EMAIL, REGEX_NAME } from "../../utils/constants";
 
 export default function Register({ handleRegistration, serverError }) {
   // хук валидации
@@ -39,7 +39,7 @@ export default function Register({ handleRegistration, serverError }) {
             minLength="2"
             maxLength="30"
             error={errors.name}
-            pattern={regExName}
+            pattern={REGEX_NAME}
           />
           <Input
             label="E-mail"
@@ -50,7 +50,7 @@ export default function Register({ handleRegistration, serverError }) {
             placeholder="Введите email"
             handleChange={handleChange}
             error={errors.email}
-            pattern={regExEmail}
+            pattern={REGEX_EMAIL}
           />
           <Input
             label="Пароль"

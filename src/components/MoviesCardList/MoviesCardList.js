@@ -2,6 +2,17 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useState, useEffect } from "react";
 
+import {
+  SCREEN_LARGE,
+  SCREEN_MEDIUM,
+  SHOWN_MOVIES_12,
+  SHOWN_MOVIES_8,
+  SHOWN_MOVIES_5,
+  DESKTOP,
+  TABLET,
+  MOBILE,
+} from "../../utils/constants.js";
+
 export default function MoviesCardList({
   movies,
   savable,
@@ -13,37 +24,39 @@ export default function MoviesCardList({
   //количество отображаемых фильмов
   const [countMovies, setCountMovies] = useState(0);
 
-  //функция соотношения размера экрана и количества карточек
-  function changeMovieCount() {
-    const width = window.innerWidth;
-    if (width > 1066) {
-      setCountMovies(12);
-    } else if (width > 678) {
-      setCountMovies(8);
-    } else {
-      setCountMovies(5);
-    }
-  }
   useEffect(() => {
     changeMovieCount();
   }, []);
 
+  //функция соотношения размера экрана и количества карточек
+  function changeMovieCount() {
+    const width = window.innerWidth;
+    if (width > SCREEN_LARGE) {
+      setCountMovies(SHOWN_MOVIES_12);
+    } else if (width > SCREEN_MEDIUM) {
+      setCountMovies(SHOWN_MOVIES_8);
+    } else {
+      setCountMovies(SHOWN_MOVIES_5);
+    }
+  }
+
   //клик по кнопке еще
   function showMoreClick() {
     const width = window.innerWidth;
-    if (width > 1066) {
-      setCountMovies(countMovies + 3);
-    } else if (width > 678) {
-      setCountMovies(countMovies + 2);
+    if (width > SCREEN_LARGE) {
+      setCountMovies(countMovies + DESKTOP);
+    } else if (width > SCREEN_MEDIUM) {
+      setCountMovies(countMovies + TABLET);
     } else {
-      setCountMovies(countMovies + 2);
+      setCountMovies(countMovies + MOBILE);
     }
   }
 
   //слушатель для отслеживания изменения экрана
   useEffect(() => {
     setTimeout(window.addEventListener("resize", changeMovieCount), 500);
-  });
+    return () => window.removeEventListener("resize", changeMovieCount);
+  }, []);
 
   //условие для отображения кнопки ЕЩЕ
   const isMore = countMovies > movies.length;
@@ -87,6 +100,7 @@ export default function MoviesCardList({
                 saveMovie={saveMovie}
                 movie={movie}
                 allSavedMovies={allSavedMovies}
+                movies={movies}
               />
             ))}
           </ul>

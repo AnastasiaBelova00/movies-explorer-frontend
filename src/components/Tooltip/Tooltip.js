@@ -4,10 +4,14 @@ export default function Tooltip({
   isTooltipOpen,
   setTooltipOpen,
   isRegistered,
+  isUpdate,
 }) {
   const title = isRegistered
     ? "Вы успешно зарегистрировались!"
+    : "Что-то пошло не так! Попробуйте ещё раз" || isUpdate
+    ? "Данные успешно обновлены!"
     : "Что-то пошло не так! Попробуйте ещё раз";
+
   return (
     <div
       className={`tooltip ${isTooltipOpen ? "tooltip_opened" : ""}`}

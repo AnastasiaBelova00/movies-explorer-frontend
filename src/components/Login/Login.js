@@ -2,7 +2,7 @@ import "./Login.css";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 import { useFormWithValidation } from "../../hooks/validation";
-import { regExEmail } from "../../utils/constants";
+import { REGEX_EMAIL } from "../../utils/constants";
 
 export default function Login({ handleLogin, serverError }) {
   // хук валидации
@@ -36,7 +36,7 @@ export default function Login({ handleLogin, serverError }) {
             value={values.email || ""}
             placeholder="Введите email"
             handleChange={handleChange}
-            pattern={regExEmail}
+            pattern={REGEX_EMAIL}
             error={errors.email}
           />
           <Input

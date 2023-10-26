@@ -11,20 +11,20 @@ export default function MoviesCard({
   allSavedMovies,
 }) {
   //состояние кнопки сохранения
-  const [isSaved, setSaved] = useState(false);
+  // const [isSaved, setSaved] = useState(false);
+
+  const isSaved = allSavedMovies?.some((item) => item.movieId === movie.id);
 
   //функция сохранения/удаления фильма
   function onSaveClick() {
-    const isSaved = allSavedMovies.find((item) => item.movieId === movie.id);
     if (!isSaved) {
-      setSaved(true);
+      allSavedMovies?.find((item) => item.movieId === movie.id);
       saveMovie(movie);
     } else {
       const savedMovie = allSavedMovies.find(
         (item) => item.movieId === movie.id
       );
       deleteMovie(savedMovie);
-      setSaved(false);
     }
   }
 

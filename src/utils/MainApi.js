@@ -1,6 +1,7 @@
-// export const BASE_URL = "http://localhost:3000";
 import { MOVIE_URL } from "./constants";
 export const BASE_URL = "https://api.nastasya.nomoredomainsicu.ru";
+
+// export const BASE_URL = "http://localhost:3000";
 
 //универсальная проверка запроса на сервер
 function checkStatus(res) {

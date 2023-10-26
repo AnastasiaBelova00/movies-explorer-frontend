@@ -3,7 +3,7 @@ import "./Profile.css";
 import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useFormWithValidation } from "../../hooks/validation";
-import { regExName, regExEmail } from "../../utils/constants";
+import { REGEX_NAME, REGEX_EMAIL } from "../../utils/constants";
 
 export default function Profile({ logOut, handleUpdateUser, serverError }) {
   // Подписка на контекст
@@ -12,6 +12,10 @@ export default function Profile({ logOut, handleUpdateUser, serverError }) {
   // хук валидации
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
+
+  //совпадение новых данных со старыми
+  const validationInfo =
+    currentUser.name === values.name && currentUser.email === values.email;
 
   // После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function Profile({ logOut, handleUpdateUser, serverError }) {
             value={values.name || ""}
             onChange={handleChange}
             required
-            pattern={regExName}
+            pattern={REGEX_NAME}
           />
           {/* <p className="profile__input-value">{currentUser.name}</p> */}
         </div>
@@ -57,7 +61,7 @@ export default function Profile({ logOut, handleUpdateUser, serverError }) {
             value={values.email || ""}
             onChange={handleChange}
             required
-            pattern={regExEmail}
+            pattern={REGEX_EMAIL}
           />
           {/* <p className="profile__input-value">{currentUser.email}</p> */}
         </div>
@@ -65,7 +69,7 @@ export default function Profile({ logOut, handleUpdateUser, serverError }) {
         <span className="profile__input-server-error">{serverError}</span>
         <button
           className={`profile__submit ${
-            !isValid ? "profile__submit_disabled" : ""
+            !isValid || validationInfo ? "profile__submit_disabled" : ""
           }`}
           type="submit"
           disabled={!isValid}
