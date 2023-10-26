@@ -26,7 +26,7 @@ export default function MoviesCardList({
 
   useEffect(() => {
     changeMovieCount();
-  }, []);
+  }, [movies]);
 
   //функция соотношения размера экрана и количества карточек
   function changeMovieCount() {
