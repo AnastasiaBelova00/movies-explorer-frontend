@@ -17,7 +17,6 @@ import Preloader from "../Preloader/Preloader";
 // import { filterNameMovies, filterShortMovies } from "../../utils/utils";
 
 import * as api from "../../utils/MainApi";
-import * as apiMovie from "../../utils/MoviesApi";
 
 function App() {
   //стейт логина
@@ -38,8 +37,8 @@ function App() {
   //загрузка для прелоадера
   const [isLoading, setLoading] = useState(false);
 
-  //все фильмы с сервера
-  const [allMovies, setAllMovies] = useState([]);
+  // //все фильмы с сервера
+  // const [allMovies, setAllMovies] = useState([]);
 
   //сохраненные фильмы
   const [allSavedMovies, setAllSavedMovies] = useState([]);
@@ -88,22 +87,22 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  //получение списка фильмов
-  useEffect(() => {
-    setLoading(true);
-    apiMovie
-      .getAllMovies()
-      .then((movies) => {
-        setAllMovies(movies);
-        localStorage.setItem("movies", JSON.stringify(movies));
-      })
-      .catch((err) => {
-        console.error(`Ошибка: ${err}`);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  // //получение списка фильмов
+  // useEffect(() => {
+  //   setLoading(true);
+  //   apiMovie
+  //     .getAllMovies()
+  //     .then((movies) => {
+  //       setAllMovies(movies);
+  //       localStorage.setItem("movies", JSON.stringify(movies));
+  //     })
+  //     .catch((err) => {
+  //       console.error(`Ошибка: ${err}`);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   //выход
   function logOut() {
@@ -179,6 +178,7 @@ function App() {
 
   // //функция всех фильмов
   // function getAllMovies() {
+  //   isLoading(true);
   //   apiMovie
   //     .getAllMovies()
   //     .then((movies) => {
@@ -187,6 +187,9 @@ function App() {
   //     })
   //     .catch((err) => {
   //       console.error(`Ошибка: ${err}`);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
   //     });
   // }
 
@@ -304,11 +307,9 @@ function App() {
                 <ProtectedRoute
                   isLoggedIn={isLoggedIn}
                   element={Movies}
-                  allMovies={allMovies}
                   saveMovie={saveMovie}
                   allSavedMovies={allSavedMovies}
                   deleteMovie={deleteMovie}
-                  isLoading={isLoading}
                 />
               }
             />

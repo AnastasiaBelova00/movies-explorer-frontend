@@ -19,7 +19,6 @@ export default function SavedMovies({ allSavedMovies, deleteMovie }) {
     setFilteredMovies(
       isCheckbox ? filterShortMovies(searchMovies) : searchMovies
     );
-    localStorage.setItem("searchSavedMovies", JSON.stringify(searchMovies));
   }, [allSavedMovies, isCheckbox, query]);
 
   //состояние чекбокса
@@ -32,6 +31,13 @@ export default function SavedMovies({ allSavedMovies, deleteMovie }) {
   function searchFilterSavedMovies(query) {
     setQuery(query);
   }
+
+  // //отображение состояния чекбокса
+  // useEffect(() => {
+  //   if (localStorage.checkbox) {
+  //     setCheckbox(JSON.parse(localStorage.getItem("checkbox")));
+  //   }
+  // }, []);
 
   //отображение ошибки
   useEffect(() => {

@@ -1,6 +1,6 @@
 import "./MoviesCard.css";
-import { useState, useEffect } from "react";
 import { MOVIE_URL } from "../../utils/constants";
+import { durationConverter } from "../../utils/utils";
 
 export default function MoviesCard({
   movie,
@@ -10,9 +10,7 @@ export default function MoviesCard({
   deleteMovie,
   allSavedMovies,
 }) {
-  //состояние кнопки сохранения
-  // const [isSaved, setSaved] = useState(false);
-
+  //проверка совпадения сохраненных фильмов и фильмов из массива
   const isSaved = allSavedMovies?.some((item) => item.movieId === movie.id);
 
   //функция сохранения/удаления фильма
@@ -31,14 +29,6 @@ export default function MoviesCard({
   //удаление фильма в saved-movies
   function onDeleteClick() {
     deleteMovie(movie);
-  }
-
-  //конвертация длительности фильма
-  function durationConverter(duration) {
-    const minutes = duration % 60;
-    const hours = Math.floor(duration / 60);
-
-    return `${hours}ч${minutes}м`;
   }
 
   return (
