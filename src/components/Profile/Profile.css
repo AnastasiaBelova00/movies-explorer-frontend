@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding-top: 75px;
-  height: 60vh;
+  height: 100vh;
   align-items: center;
   max-width: 410px;
 }
@@ -29,7 +29,6 @@
 }
 .profile__input-container:last-of-type {
   border-bottom: none;
-  margin-top: 17px;
 }
 
 .profile__label {
@@ -53,6 +52,7 @@
   padding: 0 0 16px;
   max-width: 400px;
   width: 100%;
+  text-align: right;
 }
 
 .profile__input-value {
@@ -77,13 +77,22 @@
   font-weight: 400;
   line-height: normal;
   border: none;
-  padding: 203px 0 16px;
+  padding: 174px 0 16px;
   transition: opacity 0.2s ease 0.1s;
 }
 
 .profile__submit:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+.profile__submit_disabled {
+  color: #8b8b8b;
+}
+
+.profile__submit_disabled:hover {
+  cursor: none;
+  opacity: 1;
 }
 
 .profile__logout {
@@ -103,6 +112,28 @@
 .profile__logout:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+.profile__input-error {
+  height: 15px;
+  color: #ee3465;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.profile__input-server-error {
+  height: 15px;
+  color: #ee3465;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
 }
 
 @media screen and (max-width: 768px) {

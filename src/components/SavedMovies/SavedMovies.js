@@ -1,12 +1,68 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { movies } from "../../utils/constants";
+import { useState, useEffect } from "react";
+import { filterShortMovies, filterNameMovies } from "../../utils/utils";
 
-export default function SavedMovies() {
+export default function SavedMovies({ allSavedMovies, deleteMovie }) {
+  //состояние чекбокса
+  const [isCheckbox, setCheckbox] = useState(false);
+  //отфильтрованные фильмы
+  const [filteredMovies, setFilteredMovies] = useState(allSavedMovies);
+  //стейт запроса
+  const [query, setQuery] = useState("");
+  //ошибка
+  const [error, setError] = useState("");
+
+  //фильтр поиска сохраненных фильмов по запросу
+  useEffect(() => {
+    const searchMovies = filterNameMovies(allSavedMovies, query);
+    setFilteredMovies(
+      isCheckbox ? filterShortMovies(searchMovies) : searchMovies
+    );
+  }, [allSavedMovies, isCheckbox, query]);
+
+  //состояние чекбокса
+  function changeCheckbox() {
+    setCheckbox(!isCheckbox);
+    localStorage.setItem("checkbox", !isCheckbox);
+  }
+
+  //запрос
+  function searchFilterSavedMovies(query) {
+    setQuery(query);
+  }
+
+  // //отображение состояния чекбокса
+  // useEffect(() => {
+  //   if (localStorage.checkbox) {
+  //     setCheckbox(JSON.parse(localStorage.getItem("checkbox")));
+  //   }
+  // }, []);
+
+  //отображение ошибки
+  useEffect(() => {
+    if (filteredMovies.length === 0) {
+      setError("По Вашему запросу ничего не найдено :(");
+    } else {
+      setError("");
+    }
+  }, [searchFilterSavedMovies]);
+
   return (
-    <main>
-      <SearchForm />
-      <MoviesCardList movies={movies} />
-    </main>
+    <>
+      <main>
+        <SearchForm
+          onSearch={searchFilterSavedMovies}
+          changeCheckbox={changeCheckbox}
+          isCheckbox={isCheckbox}
+        />
+        <span className="movie-cards__text">{error}</span>
+        <MoviesCardList
+          movies={filteredMovies}
+          deletable={true}
+          deleteMovie={deleteMovie}
+        />
+      </main>
+    </>
   );
 }

@@ -15,7 +15,7 @@
   font-weight: 400;
   line-height: normal;
   padding: 0;
-  margin: 0 0 22px;
+  /* margin: 0 0 11px; */
   border-radius: 8px;
   background: #2f2f2f;
   border: none;
@@ -23,6 +23,21 @@
   padding-left: 12px;
 }
 
-.form__input:last-of-type {
+/* .form__input:last-of-type {
   margin-bottom: 10px;
+} */
+
+.form__input-error {
+  min-height: 23px;
+  color: #ee3465;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.form__input-error_visible {
+  visibility: visible;
 }

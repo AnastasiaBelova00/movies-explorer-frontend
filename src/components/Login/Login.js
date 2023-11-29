@@ -1,8 +1,20 @@
 import "./Login.css";
 import Form from "../Form/Form";
 import Input from "../Input/Input";
+import { useFormWithValidation } from "../../hooks/validation";
+import { REGEX_EMAIL } from "../../utils/constants";
 
-export default function Login() {
+export default function Login({ handleLogin, serverError }) {
+  // хук валидации
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(values);
+    resetForm(values);
+  };
+
   return (
     <>
       <main className="login">
@@ -12,20 +24,30 @@ export default function Login() {
           question="Еще не зарегистрированы?"
           to="/signup"
           linkText="Регистрация"
+          serverError={serverError}
+          handleSubmit={handleSubmit}
+          isValid={isValid}
         >
           <Input
-            lable="E-mail"
-            type="text"
+            label="E-mail"
+            type="email"
             name="email"
             id="email"
+            value={values.email || ""}
             placeholder="Введите email"
+            handleChange={handleChange}
+            pattern={REGEX_EMAIL}
+            error={errors.email}
           />
           <Input
-            lable="Пароль"
-            type="text"
+            label="Пароль"
+            type="password"
             name="password"
             id="password"
+            value={values.password || ""}
             placeholder="Введите пароль"
+            handleChange={handleChange}
+            error={errors.password}
           />
         </Form>
       </main>

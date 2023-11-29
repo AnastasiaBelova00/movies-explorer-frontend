@@ -7,7 +7,7 @@
 .card__image {
   width: 100%;
   max-width: 360px;
-  max-height: 201px;
+  height: 201px;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
@@ -71,7 +71,7 @@
   right: 14px;
   transition: opacity 0.2s ease 0.1s;
 }
-.card__button_saved:hover {
+.card__button_delete:hover {
   cursor: pointer;
   opacity: 0.8;
 }
@@ -141,9 +141,15 @@
   .card__button {
     top: 9px;
     right: 9px;
+    opacity: 1;
   }
   .card__button_saved {
     top: 9px;
     right: 9px;
+  }
+
+  .card__button:hover {
+    cursor: pointer;
+    opacity: 0.8;
   }
 }

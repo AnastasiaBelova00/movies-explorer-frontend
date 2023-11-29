@@ -1,4 +1,11 @@
-# Frontend дипломного проекта
+# Дипломный проект
+
+Ссылка на pull request: https://github.com/AnastasiaBelova00/movies-explorer-frontend/pull/2
+
+Готовый проект: https://nastasya.nomoredomainsicu.ru/
+
+backend: https://api.nastasya.nomoredomainsicu.ru
+IP: 51.250.81.237
 
 # Ссылка на макет в figma:
 
