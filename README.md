@@ -25,7 +25,7 @@ _Movies Explorer Frontend - это дипломная работа по веб-�
 ### Внешний вид проекта:
 
 - Макет: dark-2
-- ![Ссылка на макет в figma](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=891-3857&mode=design&t=2o1n0jVrlmCiWxAF-0)
+- ![Ссылка на макет в figma](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=1-7266&mode=design)
 
 ### Инструкция по развертыванию и требования
 
